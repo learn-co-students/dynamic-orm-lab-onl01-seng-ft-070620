@@ -14,8 +14,6 @@ class InteractiveRecord
     end 
 
     def self.column_names
-        DB[:conn].results_as_hash = true 
-
         sql = "PRAGMA table_info('#{table_name}')"
 
         table_info = DB[:conn].execute(sql)
@@ -56,7 +54,7 @@ class InteractiveRecord
     end 
 
     def self.find_by_name(name)
-        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?", [name])
+        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?", name)
     end 
 
     def self.find_by(attr_hash)
