@@ -52,10 +52,10 @@ class InteractiveRecord
         val = hash.values.join
         # binding.pry
 
-        sql = <<-SQL
-            SELECT * FROM ? WHERE ? = ?
-        SQL
+        # sql = <<-SQL
+        #     SELECT * FROM ? WHERE ? = ?
+        # SQL
 
-        DB[:conn].execute(sql, self.table_name, col, val)
+        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{col} = #{val}")
     end
 end
