@@ -56,6 +56,6 @@ class InteractiveRecord
         #     SELECT * FROM ? WHERE ? = ?
         # SQL
 
-        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{col} = #{val}")
+        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{col} = '#{val}''")
     end
 end
