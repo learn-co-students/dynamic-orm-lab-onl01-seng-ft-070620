@@ -48,14 +48,6 @@ class InteractiveRecord
     end
 
     def self.find_by(hash)
-        col = hash.keys.join
-        val = hash.values.join
-        # binding.pry
-
-        # sql = <<-SQL
-        #     SELECT * FROM ? WHERE ? = ?
-        # SQL
-
-        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{col} = '#{val}'")
+        DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{hash.keys.join} = '#{hash.values.join}'")
     end
 end
